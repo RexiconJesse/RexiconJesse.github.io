@@ -501,9 +501,7 @@ var WTF = (function() {
 
             if ( typeof data === 'string' ) {
 
-                $.ajax({ url: data, 
-			
-			data: 'key=apiKey',
+                if ( RE_JSON.test( data ) ) {
 
                     // JSON
 
@@ -529,7 +527,6 @@ var WTF = (function() {
                             corpus = parseJSON( data );
                             start();
                         },
-			    data: 'key=apiKey',
                         error: function( xhr, errorType, error ) {
                             throw 'Cannot load spreadsheet. Is it published? (@see https://support.google.com/drive/answer/37579?hl=en)';
                         }
